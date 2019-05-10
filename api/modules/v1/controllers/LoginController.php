@@ -77,6 +77,25 @@ class LoginController extends RestController
         }
     }
 
+    public function actionLogout()
+    {
+        /*
+         * Không nhận được action vì không nhận được token tại đây
+         * Chuyển action sang một controller mới
+         * Có thể update thông tin cá nhân
+         *  :(
+         */
+        //TODO:: Chuyển logout sang một controller mới :(
+        if (Yii::$app->user->isGuest) {
+            return $this->apiResponseFailed("You are not a allow for this!", 403);
+        } else {
+            $user = Yii::$app->user->identity;
+            $user->access_token = null;
+            $user->save(false);
+            return $this->apiResponseOk('Logout success');
+        }
+    }
+
     public function actionSignup()
     {
         if (!Yii::$app->user->isGuest) {

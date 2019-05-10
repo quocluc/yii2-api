@@ -77,6 +77,7 @@ return [
             'rules' => [
                 'site/error' => 'site/error',
                 'v1/login' => 'v1/login/login',
+                'v1/logout' => 'v1/login/logout',
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => ['v1/user'],
